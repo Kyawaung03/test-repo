@@ -13,11 +13,16 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             background: #000000;
             font-family: 'Inter', sans-serif;
             color: #FFFFFF;
-            overflow-x: hidden;
         }
 
         /* Luxury Background */
@@ -25,6 +30,8 @@
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            width: 100%;
         }
 
         .luxury-bg::before {
@@ -38,6 +45,12 @@
                 radial-gradient(circle at 20% 50%, rgba(234, 208, 105, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(212, 176, 93, 0.03) 0%, transparent 50%);
             pointer-events: none;
+        }
+
+        .container-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
         }
 
         /* Chrome Gradient */
@@ -89,6 +102,8 @@
             box-shadow: 
                 0 8px 32px rgba(234, 208, 105, 0.3),
                 inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .gold-button::before {
@@ -125,7 +140,7 @@
 
         .clock-display {
             font-family: 'Courier New', monospace;
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 3.5rem);
             font-weight: 900;
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 50%, #CBBA98 100%);
             -webkit-background-clip: text;
@@ -143,6 +158,10 @@
             transition: all 0.3s ease;
             font-weight: 600;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: clamp(0.875rem, 2vw, 1rem);
         }
 
         .shift-button:hover {
@@ -166,6 +185,11 @@
             color: #FFFFFF;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: clamp(0.875rem, 2vw, 1rem);
         }
 
         .luxury-input:focus {
@@ -186,11 +210,25 @@
             backdrop-filter: blur(10px);
             box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
             color: #E0E0E0;
+            overflow-y: auto;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+            line-height: 1.5;
         }
 
         /* Logo */
         .logo-container {
             animation: float 3s ease-in-out infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-img {
+            max-width: 100%;
+            height: auto;
+            width: auto;
+            max-height: 200px;
+            filter: drop-shadow(0 0 20px rgba(234, 208, 105, 0.3));
         }
 
         @keyframes float {
@@ -203,11 +241,12 @@
             background: linear-gradient(90deg, transparent, #EAD069, transparent);
             height: 2px;
             width: 100%;
+            margin: 1.5rem 0;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 3vw, 1.25rem);
             font-weight: 700;
             background: linear-gradient(135deg, #E0E0E0 0%, #CBBA98 50%, #EAD069 100%);
             -webkit-background-clip: text;
@@ -219,112 +258,156 @@
         /* Main Title */
         .main-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
             font-weight: 900;
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 30%, #E0E0E0 60%, #CBBA98 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 0 0 40px rgba(234, 208, 105, 0.3);
+            line-height: 1.2;
         }
 
         .subtitle {
             color: #CBBA98;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            letter-spacing: 0.5px;
             font-weight: 500;
         }
 
         /* Label Styling */
         .luxury-label {
             color: #E0E0E0;
-            font-size: 0.875rem;
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem);
             font-weight: 600;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* Footer */
+        .footer-text {
+            font-size: clamp(0.7rem, 1.5vw, 0.875rem);
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Spacing */
+        @media (max-width: 768px) {
+            .metallic-card {
+                padding: 1.5rem;
+            }
+
+            .clock-card {
+                padding: 1.5rem;
+            }
+
+            .logo-img {
+                max-height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metallic-card {
+                padding: 1rem;
+            }
+
+            .clock-card {
+                padding: 1rem;
+            }
+
+            .logo-img {
+                max-height: 120px;
+            }
+
+            .gold-line {
+                margin: 1rem 0;
+            }
         }
     </style>
 </head>
 <body class="luxury-bg">
-    <div class="min-h-screen flex items-center justify-center p-4 py-8">
-        <div class="w-full max-w-2xl">
-            
-            <!-- Logo Section -->
-            <div class="logo-container text-center mb-8">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect fill='%23000000' width='500' height='500'/%3E%3Cdefs%3E%3ClinearGradient id='silverGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23E0E0E0;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%23B1B0B1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%235F5E5C;stop-opacity:1' /%3E%3C/linearGradient%3E%3ClinearGradient id='goldGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F3D48D;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%23EAD069;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23D4B05D;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='250' y='240' font-family='Arial, sans-serif' font-size='80' font-weight='900' text-anchor='middle' fill='url(%23silverGrad)' letter-spacing='4'%3EKARTU%3C/text%3E%3Ctext x='250' y='320' font-family='Arial, sans-serif' font-size='80' font-weight='900' text-anchor='middle' fill='url(%23goldGrad)' letter-spacing='4'%3ETOTO%3C/text%3E%3Ctext x='250' y='380' font-family='Arial, sans-serif' font-size='28' text-anchor='middle' fill='%23CBBA98' letter-spacing='2'%3EKARTU GROUP%3C/text%3E%3Cline x1='80' y1='400' x2='420' y2='400' stroke='url(%23goldGrad)' stroke-width='3'/%3E%3C/svg%3E" alt="KARTUTOTO" style="max-width: 280px; width: 100%; height: auto; filter: drop-shadow(0 0 20px rgba(234, 208, 105, 0.3));">
-            </div>
-
-            <!-- Main Title -->
-            <div class="text-center mb-8">
-                <h1 class="main-title mb-2">PREDIKSI CAPTION GENERATOR</h1>
-                <p class="subtitle">Generate caption prediksi otomatis dengan teknologi terkini</p>
-                <div class="gold-line mt-4"></div>
-            </div>
-
-            <!-- Live Clock & Date -->
-            <div class="clock-card rounded-2xl p-8 mb-8">
-                <div class="text-center">
-                    <div class="clock-display" id="liveClock">00:00:00</div>
-                    <div class="text-xl mt-4" id="liveDate" style="color: #CBBA98; letter-spacing: 1px; font-weight: 500;">Senin, 21 Juli 2026</div>
-                </div>
-            </div>
-
-            <!-- Main Card -->
-            <div class="metallic-card rounded-2xl p-8">
+    <div class="container-wrapper">
+        <div class="min-h-screen flex items-center justify-center p-4 py-6 md:py-8">
+            <div class="w-full max-w-2xl">
                 
-                <!-- Shift Selection -->
-                <div class="mb-8">
-                    <p class="luxury-label mb-4">⚡ Pilih Shift</p>
-                    <div class="flex gap-4">
-                        <button onclick="setShift('pagi')" id="btn-pagi" class="shift-button active flex-1 py-3 px-4 rounded-lg transition-all duration-300">
-                            🌅 PAGI (13:00 - 18:00)
-                        </button>
-                        <button onclick="setShift('malam')" id="btn-malam" class="shift-button flex-1 py-3 px-4 rounded-lg transition-all duration-300">
-                            🌙 MALAM (20:00 - 09:00)
-                        </button>
+                <!-- Logo Section -->
+                <div class="logo-container text-center">
+                    <img src="LOGO KARTUTOTO PNG.png" alt="KARTUTOTO" class="logo-img mx-auto">
+                </div>
+
+                <!-- Main Title -->
+                <div class="text-center mb-6 md:mb-8">
+                    <h1 class="main-title mb-2 md:mb-3">PREDIKSI CAPTION GENERATOR</h1>
+                    <p class="subtitle">Generate caption prediksi otomatis dengan teknologi terkini</p>
+                    <div class="gold-line"></div>
+                </div>
+
+                <!-- Live Clock & Date -->
+                <div class="clock-card rounded-2xl p-6 md:p-8 mb-6 md:mb-8">
+                    <div class="text-center">
+                        <div class="clock-display" id="liveClock">00:00:00</div>
+                        <div class="text-base md:text-lg mt-3 md:mt-4" id="liveDate" style="color: #CBBA98; letter-spacing: 1px; font-weight: 500;">Senin, 21 Juli 2026</div>
                     </div>
                 </div>
 
-                <div class="gold-line mb-8"></div>
-
-                <!-- Time Selection -->
-                <div class="mb-8">
-                    <p class="luxury-label mb-4">⏰ Pilih Jam</p>
-                    <select id="jamSelect" onchange="generateCaption()" class="luxury-input w-full py-3 px-4 rounded-lg font-semibold">
-                        <option value="">-- Pilih Jam --</option>
-                    </select>
-                </div>
-
-                <!-- Customize Message -->
-                <div class="mb-8">
-                    <p class="luxury-label mb-4">✏️ Customize Pesan Akhir (Optional)</p>
-                    <textarea id="customMessage" placeholder="Biarkan kosong untuk template default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰" class="luxury-input w-full py-3 px-4 rounded-lg resize-none" rows="2"></textarea>
-                </div>
-
-                <div class="gold-line mb-8"></div>
-
-                <!-- Generated Caption Preview -->
-                <div class="mb-8">
-                    <p class="luxury-label mb-4">👁️ Preview Caption</p>
-                    <div id="captionPreview" class="preview-box w-full py-4 px-4 rounded-lg min-h-[200px] max-h-[400px] overflow-y-auto whitespace-pre-wrap text-sm font-mono">
-                        Pilih jam untuk melihat preview caption
+                <!-- Main Card -->
+                <div class="metallic-card rounded-2xl p-6 md:p-8">
+                    
+                    <!-- Shift Selection -->
+                    <div class="mb-6 md:mb-8">
+                        <label class="luxury-label">⚡ Pilih Shift</label>
+                        <div class="flex gap-3 md:gap-4">
+                            <button onclick="setShift('pagi')" id="btn-pagi" class="shift-button active flex-1 transition-all duration-300">
+                                🌅 PAGI
+                            </button>
+                            <button onclick="setShift('malam')" id="btn-malam" class="shift-button flex-1 transition-all duration-300">
+                                🌙 MALAM
+                            </button>
+                        </div>
                     </div>
+
+                    <div class="gold-line"></div>
+
+                    <!-- Time Selection -->
+                    <div class="mb-6 md:mb-8">
+                        <label class="luxury-label">⏰ Pilih Jam</label>
+                        <select id="jamSelect" onchange="generateCaption()" class="luxury-input">
+                            <option value="">-- Pilih Jam --</option>
+                        </select>
+                    </div>
+
+                    <!-- Customize Message -->
+                    <div class="mb-6 md:mb-8">
+                        <label class="luxury-label">✏️ Customize Pesan Akhir (Optional)</label>
+                        <textarea id="customMessage" placeholder="Biarkan kosong untuk template default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰" class="luxury-input resize-none" rows="2"></textarea>
+                    </div>
+
+                    <div class="gold-line"></div>
+
+                    <!-- Generated Caption Preview -->
+                    <div class="mb-6 md:mb-8">
+                        <label class="luxury-label">👁️ Preview Caption</label>
+                        <div id="captionPreview" class="preview-box min-h-[180px] md:min-h-[200px] max-h-[350px] md:max-h-[400px] whitespace-pre-wrap font-mono">
+                            Pilih jam untuk melihat preview caption
+                        </div>
+                    </div>
+
+                    <!-- Copy Button -->
+                    <button onclick="copyCaption()" class="gold-button w-full py-3 md:py-4 px-4 md:px-6 rounded-lg transition-all duration-300 text-base md:text-lg font-semibold">
+                        📋 COPY CAPTION
+                    </button>
+
                 </div>
 
-                <!-- Copy Button -->
-                <button onclick="copyCaption()" class="gold-button w-full py-4 px-6 rounded-lg transition-all duration-300 text-lg flex items-center justify-center gap-2">
-                    📋 COPY CAPTION
-                </button>
+                <!-- Footer Info -->
+                <div class="text-center mt-6 md:mt-8">
+                    <p class="footer-text" style="color: #CBBA98;">Caption akan langsung tercopy ke clipboard Anda</p>
+                    <p class="footer-text" style="color: #8A764D; margin-top: 0.3rem;">Siap untuk dikirim ke WA dan Telegram 📱</p>
+                </div>
 
             </div>
-
-            <!-- Footer Info -->
-            <div class="text-center mt-8">
-                <p style="color: #CBBA98; font-size: 0.875rem; letter-spacing: 0.5px;">Caption akan langsung tercopy ke clipboard Anda</p>
-                <p style="color: #8A764D; font-size: 0.875rem; margin-top: 0.5rem;">Siap untuk dikirim ke WA dan Telegram 📱</p>
-            </div>
-
         </div>
     </div>
 
@@ -356,13 +439,11 @@
         function updateLiveTime() {
             const now = new Date();
             
-            // Format jam (HH:MM:SS)
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             document.getElementById('liveClock').textContent = `${hours}:${minutes}:${seconds}`;
             
-            // Format tanggal
             const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
             const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             
@@ -421,17 +502,14 @@
             const jadwal = currentShift === 'pagi' ? jadwalPagi : jadwalMalam;
             const pasaran = jadwal[currentJam];
 
-            // Tentukan tanggal berdasarkan shift
             let tanggalDate = new Date();
             
-            // Jika shift malam, gunakan tanggal besok
             if (currentShift === 'malam') {
                 tanggalDate.setDate(tanggalDate.getDate() + 1);
             }
             
             const tanggal = formatTanggal(tanggalDate);
 
-            // Build caption
             let caption = '♣️♥️ PREDIKSI KARTUTOTO RUMUSAN MASTER MBAH PETRUK HARI INI\n\n';
             caption += `${tanggal}\n\n`;
             caption += pasaran.join('\n');
@@ -473,7 +551,6 @@
             updateLiveTime();
             setShift('pagi');
             
-            // Update jam setiap detik
             setInterval(updateLiveTime, 1000);
         });
     </script>
