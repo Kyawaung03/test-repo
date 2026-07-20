@@ -82,6 +82,8 @@
         };
 
         const jadwalMalam = {
+            '20.00': ['KENTUCKY MID', 'ROMA', 'FLORIDA MID', 'MONACO', 'NEWYORK MID'],
+            '21.00': ['TURIN', 'ITALY', 'CAROLINA DAY', 'CUBA', 'FRANCE'],
             '23.30': ['MADRID', 'OREGON 03', 'BULGARIA', 'HUNGARY', 'MIAMI'],
             '03.00': ['OREGON 06', 'CALIFORNIA', 'FLORIDA EVE', 'OREGON 09', 'NEWYORK EVE'],
             '06.00': ['KENTUCKY EVE', 'CAROLINA EVE', 'ECUADOR', 'AUSTRIA', 'CAMBODIA', 'FOSHAN'],
@@ -161,9 +163,15 @@
             const jadwal = currentShift === 'pagi' ? jadwalPagi : jadwalMalam;
             const pasaran = jadwal[currentJam];
 
-            // Get tanggal otomatis
-            const today = new Date();
-            const tanggal = formatTanggal(today);
+            // Tentukan tanggal berdasarkan shift
+            let tanggalDate = new Date();
+            
+            // Jika shift malam, gunakan tanggal besok
+            if (currentShift === 'malam') {
+                tanggalDate.setDate(tanggalDate.getDate() + 1);
+            }
+            
+            const tanggal = formatTanggal(tanggalDate);
 
             // Build caption
             let caption = '♣️♥️ PREDIKSI KARTUTOTO RUMUSAN MASTER MBAH PETRUK HARI INI\n\n';
