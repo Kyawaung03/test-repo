@@ -161,7 +161,7 @@
                     <div class="space-compact">
                         <label class="luxury-label">⚡ Pilih Shift</label>
                         <div class="flex gap-2">
-                            <button onclick="setShift('pagi')" id="btn-pagi" class="shift-button active flex-1 transition-all duration-300">🌅 PAGI</button>
+                            <button onclick="setShift('pagi')" id="btn-pagi" class="shift-button active flex-1 transition-all duration-300"> PAGI</button>
                             <button onclick="setShift('malam')" id="btn-malam" class="shift-button flex-1 transition-all duration-300">🌙 MALAM</button>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
 
                     <!-- Time Selection -->
                     <div class="space-compact">
-                        <label class="luxury-label">⏰ Pilih Jam</label>
+                        <label class="luxury-label"> Pilih Jam</label>
                         <select id="jamSelect" onchange="generateCaption()" class="luxury-input">
                             <option value="">-- Pilih Jam --</option>
                         </select>
@@ -179,20 +179,20 @@
                     <!-- Customize Message -->
                     <div class="space-section">
                         <label class="luxury-label">✏️ Pesan Akhir</label>
-                        <textarea id="customMessage" oninput="generateCaption()" placeholder="Default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰" class="luxury-input resize-none" rows="1" style="min-height: 40px;"></textarea>
+                        <textarea id="customMessage" oninput="generateCaption()" placeholder="Default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - " class="luxury-input resize-none" rows="1" style="min-height: 40px;"></textarea>
                     </div>
 
                     <div class="gold-line"></div>
 
                     <!-- Generated Caption Preview -->
                     <div class="space-section">
-                        <label class="luxury-label">👁️ Preview</label>
+                        <label class="luxury-label">️ Preview</label>
                         <div id="captionPreview" class="preview-box font-mono">Pilih jam untuk preview</div>
                     </div>
 
                     <!-- Copy Button -->
                     <button onclick="copyCaption()" class="gold-button w-full py-3 px-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide">
-                        📋 COPY CAPTION
+                         COPY CAPTION
                     </button>
 
                 </div>
@@ -208,23 +208,22 @@
     </div>
 
     <script>
-        // DATA JADWAL: Copy-paste 100% sama persis dengan font Mathematical Bold yang Anda berikan
         const jadwalPagi = {
-            '13.00': ['𝐊𝐎𝐖𝐋𝐎𝐎𝐍', '𝐒𝐈𝐍𝐆𝐀𝐏𝐎𝐑𝐄', '𝐉𝐄𝐉𝐔𝐋𝐎𝐓𝐓𝐎', '𝐓𝐎𝐓𝐎𝐁𝐄𝐈𝐉𝐈𝐍𝐆', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟑'],
-            '15.00': ['𝐓𝐎𝐓𝐎𝐅𝐔𝐙𝐇𝐎𝐔', '𝐂𝐘𝐏𝐑𝐔𝐒', '𝐓𝐀𝐈𝐖𝐀𝐍', '𝐓𝐀𝐈𝐂𝐇𝐔𝐍𝐆', '𝐌𝐄𝐗𝐈𝐂𝐎', '𝐓𝐓𝐌 𝟓𝐃 𝐏𝟐'],
-            '17.00': ['𝐈𝐂𝐄𝐋𝐀𝐍𝐃', '𝐎𝐒𝐋𝐎', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟒', '𝐁𝐇𝐔𝐓𝐀𝐍', '𝐇𝐀𝐈𝐓𝐈', '𝐇𝐎𝐍𝐆𝐊𝐎𝐍𝐆'],
-            '18.00': ['𝐓𝐓𝐌 𝟒𝐃 𝐏𝟓', '𝐊𝐈𝐍𝐆𝐊𝐎𝐍𝐆 𝐏𝟐', '𝐃𝐄𝐍𝐕𝐄𝐑', '𝐓𝐎𝐑𝐎𝐍𝐓𝐎', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟔']
+            '13.00': ['𝐎𝐖𝐋𝐎𝐎𝐍', '𝐈𝐍𝐆𝐀𝐏𝐎𝐑𝐄', '𝐉𝐄𝐉𝐔𝐋𝐎𝐓𝐓𝐎', '𝐎𝐓𝐎𝐁𝐄𝐈𝐉𝐈𝐍𝐆', '𝐓𝐌 𝐃 𝐏𝟑'],
+            '15.00': ['𝐎𝐓𝐎𝐅𝐔𝐙𝐇𝐎𝐔', '𝐂𝐘𝐏𝐑𝐔𝐒', '𝐓𝐀𝐖𝐀', '𝐓𝐀𝐈𝐂𝐇𝐔𝐍𝐆', '𝐄𝐗𝐂𝐎', '𝐓𝐓𝐌 𝐃 𝐏'],
+            '17.00': ['𝐈𝐂𝐄𝐋𝐀𝐍𝐃', '𝐎𝐒𝐎', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟒', '𝐇𝐔𝐀𝐍', '𝐀𝐈𝐓𝐈', '𝐇𝐎𝐍𝐆𝐊𝐍𝐆'],
+            '18.00': ['𝐓𝐓𝐌 𝐃 𝐏', '𝐊𝐈𝐍𝐆𝐊𝐎𝐍𝐆 𝐏𝟐', '𝐄𝐍𝐕𝐄𝐑', '𝐎𝐑𝐎𝐍𝐓𝐎', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟔']
         };
 
         const jadwalMalam = {
-            '20.00': ['𝐊𝐄𝐍𝐓𝐔𝐂𝐊𝐘 𝐌𝐈𝐃', '𝐑𝐎𝐌𝐀', '𝐅𝐋𝐎𝐑𝐈𝐃𝐀 𝐌𝐈𝐃', '𝐌𝐎𝐍𝐀𝐂𝐎', '𝐍𝐄𝐖𝐘𝐎𝐑𝐊 𝐌𝐈𝐃'],
-            '21.00': ['𝐓𝐔𝐑𝐈𝐍', '𝐈𝐓𝐀𝐋𝐘', '𝐂𝐀𝐑𝐎𝐋𝐈𝐍𝐀 𝐃𝐀𝐘', '𝐂𝐔𝐁𝐀', '𝐅𝐑𝐀𝐍𝐂𝐄'],
-            '23.30': ['𝐌𝐀𝐃𝐑𝐈𝐃', '𝐎𝐑𝐄𝐆𝐎𝐍 𝟎𝟑', '𝐁𝐔𝐋𝐆𝐀𝐑𝐈𝐀', '𝐇𝐔𝐍𝐆𝐀𝐑𝐘', '𝐌𝐈𝐀𝐌𝐈'],
-            '03.00': ['𝐎𝐑𝐄𝐆𝐎𝐍 𝟎𝟔', '𝐂𝐀𝐋𝐈𝐅𝐎𝐑𝐍𝐈𝐀', '𝐅𝐋𝐎𝐑𝐈𝐃𝐀 𝐄𝐕𝐄', '𝐎𝐑𝐄𝐆𝐎𝐍 𝟎𝟗', '𝐍𝐄𝐖𝐘𝐎𝐑𝐊 𝐄𝐕𝐄'],
-            '06.00': ['𝐊𝐄𝐍𝐓𝐔𝐂𝐊𝐘 𝐄𝐕𝐄', '𝐂𝐀𝐑𝐎𝐋𝐈𝐍𝐀 𝐄𝐕𝐄', '𝐄𝐂𝐔𝐀𝐃𝐎𝐑', '𝐀𝐔𝐒𝐓𝐑𝐈𝐀', '𝐂𝐀𝐌𝐁𝐎𝐃𝐈𝐀', '𝐅𝐎𝐒𝐇𝐀𝐍'],
-            '07.30': ['𝐎𝐑𝐄𝐆𝐎𝐍 𝟏𝟐', '𝐁𝐔𝐋𝐋𝐒𝐄𝐘𝐄', '𝐂𝐇𝐈𝐋𝐄', '𝐋𝐀𝐎𝐒', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟏'],
-            '08.00': ['𝐒𝐘𝐃𝐍𝐄𝐘', '𝐂𝐇𝐄𝐍𝐆𝐃𝐔', '𝐆𝐔𝐀𝐍𝐆𝐃𝐎𝐍𝐆', '𝐓𝐓𝐌 𝟓𝐃 𝐏𝟏', '𝐂𝐇𝐈𝐍𝐀'],
-            '09.00': ['𝐂𝐇𝐎𝐍𝐆𝐐𝐈𝐍𝐆', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟐', '𝐏𝐇𝐈𝐋𝐈𝐏𝐏𝐈𝐍𝐄𝐒', '𝐊𝐈𝐍𝐆 𝐊𝐎𝐍𝐆 𝐏𝟏', '𝐉𝐀𝐏𝐀𝐍']
+            '20.00': ['𝐊𝐄𝐍𝐓𝐔𝐂𝐊𝐘 𝐌𝐈𝐃', '𝐎𝐌𝐀', '𝐅𝐋𝐎𝐑𝐈𝐃𝐀 𝐌𝐈𝐃', '𝐌𝐎𝐍𝐀𝐂𝐎', '𝐍𝐄𝐖𝐘𝐎𝐑𝐊 𝐌𝐈𝐃'],
+            '21.00': ['𝐓𝐔𝐑𝐈𝐍', '𝐈𝐓𝐋𝐘', '𝐂𝐀𝐑𝐎𝐋𝐈𝐍𝐀 𝐃𝐀𝐘', '𝐔𝐁𝐀', '𝐅𝐑𝐀𝐍𝐂𝐄'],
+            '23.30': ['𝐌𝐀𝐃𝐑𝐃', '𝐎𝐑𝐄𝐆𝐎 𝟎𝟑', '𝐔𝐋𝐆𝐀𝐑𝐈', '𝐇𝐔𝐍𝐆𝐀𝐘', '𝐌𝐈𝐀𝐌'],
+            '03.00': ['𝐎𝐑𝐆𝐎 𝟎𝟔', '𝐀𝐋𝐈𝐅𝐎𝐑𝐈𝐀', '𝐋𝐎𝐈𝐃𝐀 𝐄𝐕𝐄', '𝐎𝐑𝐆𝐎𝐍 𝟎𝟗', '𝐄𝐖𝐘𝐎𝐑𝐊 𝐕𝐄'],
+            '06.00': ['𝐊𝐄𝐍𝐓𝐔𝐂𝐊 𝐄𝐕𝐄', '𝐂𝐀𝐎𝐋𝐈𝐍𝐀 𝐄𝐕𝐄', '𝐄𝐔𝐀𝐃𝐎𝐑', '𝐔𝐒𝐓𝐑𝐈𝐀', '𝐂𝐀𝐌𝐁𝐎𝐃𝐀', '𝐅𝐎𝐒𝐇𝐀𝐍'],
+            '07.30': ['𝐎𝐄𝐆𝐎𝐍 𝟏', '𝐁𝐔𝐋𝐋𝐒𝐄𝐘𝐄', '𝐂𝐇𝐈𝐋𝐄', '𝐋𝐀𝐎𝐒', '𝐓𝐌 𝟒𝐃 𝐏𝟏'],
+            '08.00': ['𝐒𝐘𝐃𝐍𝐄𝐘', '𝐂𝐇𝐄𝐍𝐆𝐃𝐔', '𝐆𝐀𝐍𝐆𝐃𝐎𝐍', '𝐓𝐓𝐌 𝟓𝐃 𝐏𝟏', '𝐇𝐈𝐍𝐀'],
+            '09.00': ['𝐂𝐇𝐍𝐆𝐐𝐈𝐍𝐆', '𝐓𝐓 𝟒𝐃 𝟐', '𝐏𝐇𝐈𝐋𝐈𝐏𝐏𝐈𝐍𝐄𝐒', '𝐊𝐈𝐆 𝐊𝐎𝐍𝐆 𝐏𝟏', '𝐉𝐏𝐀𝐍']
         };
 
         let currentShift = 'pagi';
@@ -276,7 +275,7 @@
             document.getElementById('captionPreview').textContent = 'Pilih jam untuk preview';
         }
 
-        // LOGIKA BARU: Tanggal caption ditentukan oleh JAM REAL-TIME, bukan jam yang dipilih di dropdown
+        // LOGIKA FINAL: Hanya 3 jam yang +1 hari (20.00, 21.00, 23.30), sisanya hari ini
         function generateCaption() {
             currentJam = document.getElementById('jamSelect').value;
             if (!currentJam) {
@@ -288,10 +287,11 @@
             const pasaran = allJadwal[currentJam];
 
             let tanggalDate = new Date();
-            const currentHour = tanggalDate.getHours();
-
-            // Jika jam real-time di perangkat sudah 20:00 atau lebih, tanggal caption menjadi "besok"
-            if (currentHour >= 20) {
+            
+            // Hanya jam 20.00, 21.00, dan 23.30 yang captionnya tanggal besok (+1)
+            const besokTimes = ['20.00', '21.00', '23.30'];
+            
+            if (besokTimes.includes(currentJam)) {
                 tanggalDate.setDate(tanggalDate.getDate() + 1);
             }
             
