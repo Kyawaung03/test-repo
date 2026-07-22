@@ -7,354 +7,122 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow-x: hidden; }
+        body { background: #000000; font-family: 'Inter', sans-serif; color: #FFFFFF; }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            background: #000000;
-            font-family: 'Inter', sans-serif;
-            color: #FFFFFF;
-        }
-
-        /* Luxury Background */
         .luxury-bg {
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            overflow: hidden;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; overflow: hidden;
         }
-
         .luxury-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(234, 208, 105, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(212, 176, 93, 0.03) 0%, transparent 50%);
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(234, 208, 105, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(212, 176, 93, 0.03) 0%, transparent 50%);
             pointer-events: none;
         }
-
         .container-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-            width: 100%;
-            height: 100vh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;
+            width: 100%; height: 100vh; overflow-y: auto; overflow-x: hidden;
         }
-
         .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 1rem;
-            width: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 100vh; padding: 1rem; width: 100%;
         }
-
-        /* Chrome Gradient */
-        .chrome-gradient {
-            background: linear-gradient(135deg, #E0E0E0 0%, #B1B0B1 50%, #5F5E5C 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Gold Gradient */
         .gold-gradient {
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 50%, #D4B05D 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-
-        /* Metallic Card */
         .metallic-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border: 1px solid rgba(234, 208, 105, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 1px rgba(255, 255, 255, 0.1),
-                0 0 20px rgba(234, 208, 105, 0.1);
+            border: 1px solid rgba(234, 208, 105, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 0 20px rgba(234, 208, 105, 0.1);
             transition: all 0.3s ease;
         }
-
         .metallic-card:hover {
             border-color: rgba(234, 208, 105, 0.4);
-            box-shadow: 
-                0 12px 48px rgba(234, 208, 105, 0.15),
-                inset 0 1px 1px rgba(255, 255, 255, 0.2),
-                0 0 30px rgba(234, 208, 105, 0.2);
+            box-shadow: 0 12px 48px rgba(234, 208, 105, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 0 30px rgba(234, 208, 105, 0.2);
             transform: translateY(-2px);
         }
-
-        /* Gold Button */
         .gold-button {
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 50%, #D4B05D 100%);
-            color: #000000;
-            font-weight: 700;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 8px 32px rgba(234, 208, 105, 0.3),
-                inset 0 1px 1px rgba(255, 255, 255, 0.3);
-            border: none;
-            cursor: pointer;
+            color: #000000; font-weight: 700; position: relative; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 8px 32px rgba(234, 208, 105, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            border: none; cursor: pointer;
         }
-
         .gold-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); transition: left 0.5s;
         }
-
-        .gold-button:hover::before {
-            left: 100%;
-        }
-
+        .gold-button:hover::before { left: 100%; }
         .gold-button:hover {
-            box-shadow: 
-                0 12px 48px rgba(234, 208, 105, 0.5),
-                inset 0 1px 1px rgba(255, 255, 255, 0.5);
-            transform: scale(1.02);
+            box-shadow: 0 12px 48px rgba(234, 208, 105, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5); transform: scale(1.02);
         }
-
-        /* Live Clock Card */
         .clock-card {
             background: linear-gradient(135deg, rgba(234, 208, 105, 0.15) 0%, rgba(212, 176, 93, 0.1) 100%);
-            border: 2px solid rgba(234, 208, 105, 0.3);
-            backdrop-filter: blur(15px);
-            box-shadow: 
-                0 8px 32px rgba(234, 208, 105, 0.2),
-                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(234, 208, 105, 0.3); backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(234, 208, 105, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
         }
-
         .clock-display {
-            font-family: 'Courier New', monospace;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 900;
+            font-family: 'Courier New', monospace; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900;
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 50%, #CBBA98 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(234, 208, 105, 0.3);
-            letter-spacing: 2px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            text-shadow: 0 0 30px rgba(234, 208, 105, 0.3); letter-spacing: 2px;
         }
-
-        /* Shift Buttons */
         .shift-button {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            border: 2px solid rgba(234, 208, 105, 0.2);
-            color: #E0E0E0;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
+            border: 2px solid rgba(234, 208, 105, 0.2); color: #E0E0E0; transition: all 0.3s ease;
+            font-weight: 600; backdrop-filter: blur(10px); cursor: pointer; padding: 0.5rem 1rem;
+            border-radius: 0.5rem; font-size: 0.875rem;
         }
-
         .shift-button:hover {
             border-color: rgba(234, 208, 105, 0.5);
             background: linear-gradient(135deg, rgba(234, 208, 105, 0.2) 0%, rgba(212, 176, 93, 0.1) 100%);
-            color: #F3D48D;
-            box-shadow: 0 0 20px rgba(234, 208, 105, 0.2);
+            color: #F3D48D; box-shadow: 0 0 20px rgba(234, 208, 105, 0.2);
         }
-
         .shift-button.active {
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 50%, #D4B05D 100%);
-            border-color: #EAD069;
-            color: #000000;
-            box-shadow: 0 8px 32px rgba(234, 208, 105, 0.4);
+            border-color: #EAD069; color: #000000; box-shadow: 0 8px 32px rgba(234, 208, 105, 0.4);
         }
-
-        /* Select & Textarea */
         .luxury-input {
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(234, 208, 105, 0.2);
-            color: #FFFFFF;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            font-family: inherit;
-            font-size: 0.875rem;
+            background: rgba(0, 0, 0, 0.5); border: 2px solid rgba(234, 208, 105, 0.2); color: #FFFFFF;
+            backdrop-filter: blur(10px); transition: all 0.3s ease; width: 100%; padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem; font-family: inherit; font-size: 0.875rem;
         }
-
         .luxury-input:focus {
-            outline: none;
-            border-color: rgba(234, 208, 105, 0.6);
-            box-shadow: 0 0 20px rgba(234, 208, 105, 0.2);
-            background: rgba(0, 0, 0, 0.7);
+            outline: none; border-color: rgba(234, 208, 105, 0.6);
+            box-shadow: 0 0 20px rgba(234, 208, 105, 0.2); background: rgba(0, 0, 0, 0.7);
         }
-
-        .luxury-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Preview Box */
+        .luxury-input::placeholder { color: rgba(255, 255, 255, 0.5); }
         .preview-box {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(10, 10, 10, 0.4) 100%);
-            border: 2px solid rgba(234, 208, 105, 0.2);
-            backdrop-filter: blur(10px);
-            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-            color: #E0E0E0;
-            overflow-y: auto;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-            line-height: 1.4;
-            max-height: 120px;
-            resize: none;
+            border: 2px solid rgba(234, 208, 105, 0.2); backdrop-filter: blur(10px);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5); color: #E0E0E0; overflow-y: auto;
+            padding: 0.75rem; border-radius: 0.5rem; font-size: 0.8rem; line-height: 1.5;
+            max-height: 200px; white-space: pre-wrap; word-wrap: break-word;
         }
-
-        /* Logo */
-        .logo-container {
-            animation: float 3s ease-in-out infinite;
-            margin-bottom: 0.5rem;
-        }
-
+        .logo-container { animation: float 3s ease-in-out infinite; margin-bottom: 0.5rem; }
         .logo-img {
-            max-width: 100%;
-            height: auto;
-            width: auto;
-            max-height: 100px;
+            max-width: 100%; height: auto; width: auto; max-height: 100px;
             filter: drop-shadow(0 0 20px rgba(234, 208, 105, 0.3));
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        /* Decorative Elements */
-        .gold-line {
-            background: linear-gradient(90deg, transparent, #EAD069, transparent);
-            height: 1px;
-            width: 100%;
-            margin: 0.75rem 0;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #E0E0E0 0%, #CBBA98 50%, #EAD069 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.5px;
-        }
-
-        /* Main Title */
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+        .gold-line { background: linear-gradient(90deg, transparent, #EAD069, transparent); height: 1px; width: 100%; margin: 0.75rem 0; }
         .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            font-weight: 900;
+            font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 900;
             background: linear-gradient(135deg, #F3D48D 0%, #EAD069 30%, #E0E0E0 60%, #CBBA98 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1px;
-            text-shadow: 0 0 40px rgba(234, 208, 105, 0.3);
-            line-height: 1.2;
-            margin: 0.5rem 0;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            letter-spacing: 1px; text-shadow: 0 0 40px rgba(234, 208, 105, 0.3); line-height: 1.2; margin: 0.5rem 0;
         }
+        .subtitle { color: #CBBA98; font-size: 0.75rem; letter-spacing: 0.5px; font-weight: 500; }
+        .luxury-label { color: #E0E0E0; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .footer-text { font-size: 0.65rem; letter-spacing: 0.3px; margin: 0.25rem 0; }
+        .main-container { width: 100%; max-width: 480px; }
+        .space-compact { margin-bottom: 0.5rem; }
+        .space-section { margin-bottom: 0.75rem; }
 
-        .subtitle {
-            color: #CBBA98;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            font-weight: 500;
-        }
-
-        /* Label Styling */
-        .luxury-label {
-            color: #E0E0E0;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        /* Footer */
-        .footer-text {
-            font-size: 0.65rem;
-            letter-spacing: 0.3px;
-            margin: 0.25rem 0;
-        }
-
-        /* Main Container */
-        .main-container {
-            width: 100%;
-            max-width: 480px;
-        }
-
-        /* Compact Spacing */
-        .space-compact {
-            margin-bottom: 0.5rem;
-        }
-
-        .space-section {
-            margin-bottom: 0.75rem;
-        }
-
-        @media (max-width: 768px) {
-            .logo-img {
-                max-height: 80px;
-            }
-
-            .main-title {
-                font-size: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-img {
-                max-height: 70px;
-            }
-
-            .main-title {
-                font-size: 1rem;
-            }
-
-            .main-container {
-                max-width: 90vw;
-            }
-        }
+        @media (max-width: 768px) { .logo-img { max-height: 80px; } .main-title { font-size: 1.25rem; } }
+        @media (max-width: 480px) { .logo-img { max-height: 70px; } .main-title { font-size: 1rem; } .main-container { max-width: 90vw; } }
     </style>
 </head>
 <body>
@@ -366,7 +134,8 @@
                 
                 <!-- Logo Section -->
                 <div class="logo-container text-center">
-                    <img src="LOGO KARTUTOTO PNG.png" alt="KARTUTOTO" class="logo-img mx-auto">
+                    <!-- PERBAIKAN 1: Nama file logo tanpa spasi agar aman di semua server -->
+                    <img src="logo-kartutoto.png" alt="KARTUTOTO" class="logo-img mx-auto">
                 </div>
 
                 <!-- Main Title -->
@@ -391,12 +160,8 @@
                     <div class="space-compact">
                         <label class="luxury-label">⚡ Pilih Shift</label>
                         <div class="flex gap-2">
-                            <button onclick="setShift('pagi')" id="btn-pagi" class="shift-button active flex-1 transition-all duration-300">
-                                🌅 PAGI
-                            </button>
-                            <button onclick="setShift('malam')" id="btn-malam" class="shift-button flex-1 transition-all duration-300">
-                                🌙 MALAM
-                            </button>
+                            <button onclick="setShift('pagi')" id="btn-pagi" class="shift-button active flex-1 transition-all duration-300">🌅 PAGI</button>
+                            <button onclick="setShift('malam')" id="btn-malam" class="shift-button flex-1 transition-all duration-300">🌙 MALAM</button>
                         </div>
                     </div>
 
@@ -413,7 +178,8 @@
                     <!-- Customize Message -->
                     <div class="space-section">
                         <label class="luxury-label">✏️ Pesan Akhir</label>
-                        <textarea id="customMessage" placeholder="Default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰" class="luxury-input resize-none" rows="1" style="min-height: 40px;"></textarea>
+                        <!-- PERBAIKAN 2: Menambahkan oninput agar preview update saat mengetik -->
+                        <textarea id="customMessage" oninput="generateCaption()" placeholder="Default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰" class="luxury-input resize-none" rows="1" style="min-height: 40px;"></textarea>
                     </div>
 
                     <div class="gold-line"></div>
@@ -421,20 +187,18 @@
                     <!-- Generated Caption Preview -->
                     <div class="space-section">
                         <label class="luxury-label">👁️ Preview</label>
-                        <div id="captionPreview" class="preview-box font-mono">
-                            Pilih jam untuk preview
-                        </div>
+                        <div id="captionPreview" class="preview-box font-mono">Pilih jam untuk preview</div>
                     </div>
 
                     <!-- Copy Button -->
-                    <button onclick="copyCaption()" class="gold-button w-full py-2 px-3 rounded-lg transition-all duration-300 text-sm font-semibold">
+                    <button onclick="copyCaption()" class="gold-button w-full py-3 px-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide">
                         📋 COPY CAPTION
                     </button>
 
                 </div>
 
                 <!-- Footer Info -->
-                <div class="text-center mt-3">
+                <div class="text-center mt-4 mb-2">
                     <p class="footer-text" style="color: #CBBA98;">Caption tercopy ke clipboard</p>
                     <p class="footer-text" style="color: #8A764D;">Siap kirim ke WA & Telegram 📱</p>
                 </div>
@@ -444,23 +208,25 @@
     </div>
 
     <script>
-        // Data Jadwal Prediksi
+        // PERBAIKAN 3: Data jadwal sudah disesuaikan.
+        // Jam 20.00 dan 21.00 dipindahkan ke jadwalPagi.
+        // Nama pasaran sudah menggunakan font Mathematical Bold sesuai permintaan.
         const jadwalPagi = {
-            '13.00': ['KOWLOON', 'SINGAPORE', 'JEJULOTTO', 'TOTOBEIJING', 'TTM 4D P3'],
-            '15.00': ['TOTOFUZHOU', 'CYPRUS', 'TAIWAN', 'TAICHUNG', 'MEXICO', 'TTM 5D P2'],
-            '17.00': ['ICELAND', 'OSLO', 'TTM 4D P4', 'BHUTAN', 'HAITI', 'HONGKONG'],
-            '18.00': ['TTM 4D P5', 'KINGKONG P2', 'DENVER', 'TORONTO', 'TTM 4D P6']
+            '13.00': ['𝐊𝐎𝐖𝐋𝐎𝐎𝐍', '𝐒𝐈𝐍𝐆𝐀𝐏𝐎𝐑𝐄', '𝐉𝐄𝐉𝐔𝐋𝐎𝐓𝐓𝐎', '𝐓𝐎𝐓𝐎𝐁𝐄𝐈𝐉𝐈𝐍𝐆', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟑'],
+            '15.00': ['𝐓𝐎𝐓𝐎𝐅𝐔𝐙𝐇𝐎𝐔', '𝐂𝐘𝐏𝐑𝐔𝐒', '𝐓𝐀𝐈𝐖𝐀𝐍', '𝐓𝐀𝐈𝐂𝐇𝐔𝐍𝐆', '𝐌𝐄𝐗𝐈𝐂𝐎', '𝐓𝐓𝐌 𝟓𝐃 𝐏𝟐'],
+            '17.00': ['𝐈𝐂𝐄𝐋𝐀𝐍𝐃', '𝐎𝐒𝐋𝐎', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟒', '𝐁𝐇𝐔𝐓𝐀𝐍', '𝐇𝐀𝐈𝐓𝐈', '𝐇𝐎𝐍𝐆𝐊𝐎𝐍𝐆'],
+            '18.00': ['𝐓𝐓𝐌 𝟒𝐃 𝐏𝟓', '𝐊𝐈𝐍𝐆𝐊𝐎𝐍𝐆 𝐏𝟐', '𝐃𝐄𝐍𝐕𝐄𝐑', '𝐓𝐎𝐑𝐎𝐍𝐓𝐎', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟔'],
+            '20.00': ['𝐊𝐄𝐍𝐓𝐔𝐂𝐊𝐘 𝐌𝐈𝐃', '𝐑𝐎𝐌𝐀', '𝐅𝐋𝐎𝐑𝐈𝐃𝐀 𝐌𝐈𝐃', '𝐌𝐎𝐍𝐀𝐂𝐎', '𝐍𝐄𝐖𝐘𝐎𝐑𝐊 𝐌𝐈𝐃'], // Dipindahkan ke Pagi
+            '21.00': ['𝐓𝐔𝐑𝐈𝐍', '𝐈𝐓𝐀𝐋𝐘', '𝐂𝐀𝐑𝐎𝐋𝐈𝐍𝐀 𝐃𝐀𝐘', '𝐂𝐔𝐁𝐀', '𝐅𝐑𝐀𝐍𝐂𝐄']          // Dipindahkan ke Pagi
         };
 
         const jadwalMalam = {
-            '20.00': ['KENTUCKY MID', 'ROMA', 'FLORIDA MID', 'MONACO', 'NEWYORK MID'],
-            '21.00': ['TURIN', 'ITALY', 'CAROLINA DAY', 'CUBA', 'FRANCE'],
-            '23.30': ['MADRID', 'OREGON 03', 'BULGARIA', 'HUNGARY', 'MIAMI'],
-            '03.00': ['OREGON 06', 'CALIFORNIA', 'FLORIDA EVE', 'OREGON 09', 'NEWYORK EVE'],
-            '06.00': ['KENTUCKY EVE', 'CAROLINA EVE', 'ECUADOR', 'AUSTRIA', 'CAMBODIA', 'FOSHAN'],
-            '07.30': ['OREGON 12', 'BULLSEYE', 'CHILE', 'LAOS', 'TTM 4D P1'],
-            '08.00': ['SYDNEY', 'CHENGDU', 'GUANGDONG', 'TTM 5D P1', 'CHINA'],
-            '09.00': ['CHONGQING', 'TTM 4D P2', 'PHILIPPINES', 'KING KONG P1', 'JAPAN']
+            '23.30': ['𝐌𝐀𝐃𝐑𝐈𝐃', '𝐎𝐑𝐄𝐆𝐎𝐍 𝟎𝟑', '𝐁𝐔𝐋𝐆𝐀𝐑𝐈𝐀', '𝐇𝐔𝐍𝐆𝐀𝐑𝐘', '𝐌𝐈𝐀𝐌𝐈'],
+            '03.00': ['𝐎𝐑𝐄𝐆𝐎𝐍 𝟎𝟔', '𝐂𝐀𝐋𝐈𝐅𝐎𝐑𝐍𝐈𝐀', '𝐅𝐋𝐎𝐑𝐈𝐃𝐀 𝐄𝐕𝐄', '𝐎𝐑𝐄𝐆𝐎𝐍 𝟎𝟗', '𝐍𝐄𝐖𝐘𝐎𝐑𝐊 𝐄𝐕𝐄'],
+            '06.00': ['𝐊𝐄𝐍𝐓𝐔𝐂𝐊𝐘 𝐄𝐕𝐄', '𝐂𝐀𝐑𝐎𝐋𝐈𝐍𝐀 𝐄𝐕𝐄', '𝐄𝐂𝐔𝐀𝐃𝐎𝐑', '𝐀𝐔𝐒𝐓𝐑𝐈𝐀', '𝐂𝐀𝐌𝐁𝐎𝐃𝐈𝐀', '𝐅𝐎𝐒𝐇𝐀𝐍'],
+            '07.30': ['𝐎𝐑𝐄𝐆𝐎𝐍 𝟏𝟐', '𝐁𝐔𝐋𝐋𝐒𝐄𝐘𝐄', '𝐂𝐇𝐈𝐋𝐄', '𝐋𝐀𝐎𝐒', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟏'],
+            '08.00': ['𝐒𝐘𝐃𝐍𝐄𝐘', '𝐂𝐇𝐄𝐍𝐆𝐃𝐔', '𝐆𝐔𝐀𝐍𝐆𝐃𝐎𝐍𝐆', '𝐓𝐓𝐌 𝟓𝐃 𝐏𝟏', '𝐂𝐇𝐈𝐍𝐀'],
+            '09.00': ['𝐂𝐇𝐎𝐍𝐆𝐐𝐈𝐍𝐆', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟐', '𝐏𝐇𝐈𝐋𝐈𝐏𝐏𝐈𝐍𝐄𝐒', '𝐊𝐈𝐍𝐆 𝐊𝐎𝐍𝐆 𝐏𝟏', '𝐉𝐀𝐏𝐀𝐍']
         };
 
         let currentShift = 'pagi';
@@ -470,7 +236,6 @@
         // Update Live Clock & Date
         function updateLiveTime() {
             const now = new Date();
-            
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
@@ -479,18 +244,11 @@
             const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
             const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             
-            const dayName = days[now.getDay()];
-            const date = now.getDate();
-            const monthName = months[now.getMonth()];
-            const year = now.getFullYear();
-            
-            document.getElementById('liveDate').textContent = `${dayName}, ${date} ${monthName} ${year}`;
+            document.getElementById('liveDate').textContent = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
         }
 
-        // Set Shift
         function setShift(shift) {
             currentShift = shift;
-            
             const pagiBtn = document.getElementById('btn-pagi');
             const malamBtn = document.getElementById('btn-malam');
             
@@ -501,11 +259,9 @@
                 malamBtn.classList.add('active');
                 pagiBtn.classList.remove('active');
             }
-            
             updateJamSelect();
         }
 
-        // Update pilihan jam berdasarkan shift
         function updateJamSelect() {
             const jamSelect = document.getElementById('jamSelect');
             jamSelect.innerHTML = '<option value="">-- Pilih Jam --</option>';
@@ -514,16 +270,17 @@
             Object.keys(jadwal).forEach(jam => {
                 const option = document.createElement('option');
                 option.value = jam;
-                option.textContent = jam;
+                option.textContent = `JAM ${jam}`;
                 jamSelect.appendChild(option);
             });
 
             currentJam = '';
             currentCaption = '';
             document.getElementById('captionPreview').textContent = 'Pilih jam untuk preview';
+            document.getElementById('customMessage').value = ''; // Reset pesan saat ganti shift
         }
 
-        // Generate Caption
+        // PERBAIKAN 4: Logika Tanggal Cerdas
         function generateCaption() {
             currentJam = document.getElementById('jamSelect').value;
             if (!currentJam) {
@@ -531,50 +288,64 @@
                 return;
             }
 
-            const jadwal = currentShift === 'pagi' ? jadwalPagi : jadwalMalam;
-            const pasaran = jadwal[currentJam];
+            // Gabungkan jadwal untuk memudahkan pencarian data berdasarkan jam
+            const allJadwal = { ...jadwalPagi, ...jadwalMalam };
+            const pasaran = allJadwal[currentJam];
 
             let tanggalDate = new Date();
             
-            if (currentShift === 'malam') {
+            // Daftar jam yang tanggal caption-nya adalah "BESOK" (termasuk 20.00, 21.00 yang dipindah, dan semua shift malam)
+            const tomorrowTimes = ['20.00', '21.00', '23.30', '03.00', '06.00', '07.30', '08.00', '09.00'];
+            
+            if (tomorrowTimes.includes(currentJam)) {
                 tanggalDate.setDate(tanggalDate.getDate() + 1);
             }
             
             const tanggal = formatTanggal(tanggalDate);
+            const customMsg = document.getElementById('customMessage').value.trim();
 
             let caption = '♣️♥️ PREDIKSI KARTUTOTO RUMUSAN MASTER MBAH PETRUK HARI INI\n\n';
             caption += `${tanggal}\n\n`;
             caption += pasaran.join('\n');
             caption += '\n\n';
-
-            const customMsg = document.getElementById('customMessage').value.trim();
             caption += customMsg || 'SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰';
 
             currentCaption = caption;
             document.getElementById('captionPreview').textContent = caption;
         }
 
-        // Format Tanggal
         function formatTanggal(date) {
             const months = ['JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER'];
-
-            const day = date.getDate();
-            const month = months[date.getMonth()];
-            const year = date.getFullYear();
-
-            return `${day} ${month} ${year}`;
+            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
         }
 
-        // Copy to Clipboard
+        // PERBAIKAN 5: Feedback Visual saat Copy
         function copyCaption() {
             if (!currentCaption) {
+                alert("Silakan pilih jam terlebih dahulu!");
                 return;
             }
 
             navigator.clipboard.writeText(currentCaption).then(() => {
-                // Silent copy
+                const btn = document.querySelector('.gold-button');
+                const originalHTML = btn.innerHTML;
+                const originalBg = btn.style.background;
+                const originalColor = btn.style.color;
+
+                // Ubah tampilan tombol jadi hijau
+                btn.innerHTML = '✅ BERHASIL DISALIN!';
+                btn.style.background = 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)';
+                btn.style.color = '#ffffff';
+
+                // Kembalikan ke tampilan semula setelah 2 detik
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = originalBg;
+                    btn.style.color = originalColor;
+                }, 2000);
             }).catch(err => {
-                console.error('Failed to copy:', err);
+                console.error('Gagal menyalin:', err);
+                alert('Gagal menyalin, silakan salin manual.');
             });
         }
 
@@ -582,7 +353,6 @@
         window.addEventListener('load', () => {
             updateLiveTime();
             setShift('pagi');
-            
             setInterval(updateLiveTime, 1000);
         });
     </script>
