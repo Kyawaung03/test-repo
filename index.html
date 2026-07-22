@@ -95,7 +95,6 @@
         }
         .luxury-input::placeholder { color: rgba(255, 255, 255, 0.5); }
         
-        /* PERBAIKAN: Menambahkan white-space: pre-wrap agar line break (\n) terbaca dengan baik */
         .preview-box {
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(10, 10, 10, 0.4) 100%);
             border: 2px solid rgba(234, 208, 105, 0.2); backdrop-filter: blur(10px);
@@ -137,7 +136,6 @@
                 
                 <!-- Logo Section -->
                 <div class="logo-container text-center">
-                    <!-- PERBAIKAN: Nama file tanpa spasi agar kompatibel dengan semua server -->
                     <img src="logo-kartutoto.png" alt="KARTUTOTO" class="logo-img mx-auto">
                 </div>
 
@@ -181,7 +179,6 @@
                     <!-- Customize Message -->
                     <div class="space-section">
                         <label class="luxury-label">✏️ Pesan Akhir</label>
-                        <!-- PERBAIKAN: Menambahkan oninput agar preview update secara real-time saat mengetik -->
                         <textarea id="customMessage" oninput="generateCaption()" placeholder="Default: SALAM JACKPOT & TETAP UPS BOSSKU !!! - 🥰" class="luxury-input resize-none" rows="1" style="min-height: 40px;"></textarea>
                     </div>
 
@@ -211,7 +208,7 @@
     </div>
 
     <script>
-        // PERBAIKAN: Data jadwal lengkap dengan format Mathematical Bold sesuai permintaan
+        // DATA JADWAL: Copy-paste 100% sama persis dengan font Mathematical Bold yang Anda berikan
         const jadwalPagi = {
             '13.00': ['𝐊𝐎𝐖𝐋𝐎𝐎𝐍', '𝐒𝐈𝐍𝐆𝐀𝐏𝐎𝐑𝐄', '𝐉𝐄𝐉𝐔𝐋𝐎𝐓𝐓𝐎', '𝐓𝐎𝐓𝐎𝐁𝐄𝐈𝐉𝐈𝐍𝐆', '𝐓𝐓𝐌 𝟒𝐃 𝐏𝟑'],
             '15.00': ['𝐓𝐎𝐓𝐎𝐅𝐔𝐙𝐇𝐎𝐔', '𝐂𝐘𝐏𝐑𝐔𝐒', '𝐓𝐀𝐈𝐖𝐀𝐍', '𝐓𝐀𝐈𝐂𝐇𝐔𝐍𝐆', '𝐌𝐄𝐗𝐈𝐂𝐎', '𝐓𝐓𝐌 𝟓𝐃 𝐏𝟐'],
@@ -234,7 +231,6 @@
         let currentJam = '';
         let currentCaption = '';
 
-        // Update Live Clock & Date
         function updateLiveTime() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
@@ -280,7 +276,7 @@
             document.getElementById('captionPreview').textContent = 'Pilih jam untuk preview';
         }
 
-        // PERBAIKAN UTAMA: Logika Tanggal Cerdas Berbasis Jam
+        // LOGIKA BARU: Tanggal caption ditentukan oleh JAM REAL-TIME, bukan jam yang dipilih di dropdown
         function generateCaption() {
             currentJam = document.getElementById('jamSelect').value;
             if (!currentJam) {
@@ -288,16 +284,14 @@
                 return;
             }
 
-            // Gabungkan semua jadwal agar pencarian data lebih aman, tidak peduli tab shift mana yang aktif
             const allJadwal = { ...jadwalPagi, ...jadwalMalam };
             const pasaran = allJadwal[currentJam];
 
             let tanggalDate = new Date();
-            
-            // Daftar jam yang aturan bisnisnya menggunakan tanggal "BESOK" (+1 hari)
-            const tomorrowTimes = ['20.00', '21.00', '23.30', '03.00', '06.00', '07.30', '08.00', '09.00'];
-            
-            if (tomorrowTimes.includes(currentJam)) {
+            const currentHour = tanggalDate.getHours();
+
+            // Jika jam real-time di perangkat sudah 20:00 atau lebih, tanggal caption menjadi "besok"
+            if (currentHour >= 20) {
                 tanggalDate.setDate(tanggalDate.getDate() + 1);
             }
             
@@ -319,7 +313,6 @@
             return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
         }
 
-        // PERBAIKAN: Feedback Visual saat Copy
         function copyCaption() {
             if (!currentCaption) {
                 alert("Silakan pilih jam terlebih dahulu!");
@@ -332,12 +325,10 @@
                 const originalBg = btn.style.background;
                 const originalColor = btn.style.color;
 
-                // Ubah tampilan tombol jadi hijau
                 btn.innerHTML = '✅ BERHASIL DISALIN!';
                 btn.style.background = 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)';
                 btn.style.color = '#ffffff';
 
-                // Kembalikan ke tampilan semula setelah 2 detik
                 setTimeout(() => {
                     btn.innerHTML = originalHTML;
                     btn.style.background = originalBg;
@@ -349,7 +340,6 @@
             });
         }
 
-        // Initialize
         window.addEventListener('load', () => {
             updateLiveTime();
             setShift('pagi');
